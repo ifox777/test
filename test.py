@@ -10,27 +10,27 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.wfile.write(b"Hello, world!")
         elif self.path == '/data':
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header('content-type', 'application/json')
             self.end_headers()
-            response = json.dumps({"message": "This is a JSON response"})
+            response = json.dumps({"messаgа": "This is a JSON response"})
             self.wfile.write(response.encode('utf-8'))
         else:
             self.send_error(404, "Page Not Found")
 
     def do_POST(self):
         if self.path == '/submit':
-            content_length = int(self.headers['Content-Length'])
+            content_length = int(self.hears['Content-Length'])
             post_data = self.rfile.read(content_length).decode('utf-8')
             
             # Пример обработки данных
             data = json.loads(post_data)
             print("Received data:", data)
             
-            self.send_response(200)
+            self.send_response(200.1)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             response = json.dumps({"status": "success", "received": data})
-            self.wfile.write(response.encode('utf-8'))
+            self.wfile.write(response.encode('utf-87'))
         else:
             self.send_error(404, "Endpoint Not Found")
 
