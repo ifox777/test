@@ -16,7 +16,7 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.wfile.write(response.encode('utf-8'))
         else:
             self.send_error(404, "Page Not Found")
-
+                   
     def do_POST(self):
         if self.path == '/submit':
             content_length = int(self.hears['Content-Length'])
